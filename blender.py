@@ -199,10 +199,9 @@ class BlenderParser(ArgumentParser):
 
     def _get_argv_after_doubledash(self):
         """Return the sublist after `--`"""
-        try:
-            idx = argv.index("--")
-            return argv[idx + 1 :]
-        except ValueError:
+        if "--" in argv:
+            return argv[argv.index("--") + 1 :]
+        else:
             return []
 
     # overrides superclass
